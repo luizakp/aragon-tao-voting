@@ -4,7 +4,7 @@ import aragonLogo from '../../public/images/aragonLogo.svg';
 
 export function Header() {
   return (
-    <div className="bg-white/40 py-6 px-11 flex flex-col items-center justify-between lg:flex-row">
+    <div className="bg-white/40 py-6 px-11 flex flex-col items-center justify-between sticky top-0 z-50 lg:flex-row">
       <Link href="/">
         <button className="flex items-center">
           <Image src={aragonLogo} alt={'Aragon'} />
