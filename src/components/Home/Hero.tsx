@@ -9,7 +9,7 @@ export function HomeHero() {
         </h1>
         <h1 className="text-center">is in your hands</h1>
       </div>
-      <div className="text-3xl text-gray text-center leading-10 mx-5 2xl:mx-80 xl:mx-72 lg:mx-32 md:mx-12">
+      <div className="text-3xl text-gray text-center leading-10 mx-5 2xl:mx-80 xl:mx-72 lg:mx-32 md:mx-12 mt-10">
         <p>
           The Aragon community will be working on building the safest, most
           effective DAO structure to run the Aragon network.
