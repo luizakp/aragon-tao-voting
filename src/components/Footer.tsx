@@ -15,11 +15,11 @@ const links = [
 
 export function Footer() {
   return (
-    <div className="h-44 lg:px-60 flex flex-col items-center justify-between lg:flex-row">
+    <div className="lg:px-60 flex flex-col items-center justify-between lg:flex-row my-5">
       <div className="flex flex-col items-center lg:flex-row">
         <p>Magically crafted by:</p>
         <a
-          className="ml-5 mr-7"
+          className="ml-5 mr-7 my-3"
           href={'https://twitter.com/generalmagicio'}
           target="_blank"
           rel="noreferrer"

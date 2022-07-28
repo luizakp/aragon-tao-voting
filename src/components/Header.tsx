@@ -4,7 +4,7 @@ import aragonLogo from '../../public/images/aragonLogo.svg';
 
 export function Header() {
   return (
-    <div className="bg-white py-6 px-11 flex flex-col items-center justify-between lg:flex-row">
+    <div className="bg-white/40 py-6 px-11 flex flex-col items-center justify-between lg:flex-row">
       <Link href="/">
         <button className="flex items-center">
           <Image src={aragonLogo} alt={'Aragon'} />
@@ -13,7 +13,7 @@ export function Header() {
           </h3>
         </button>
       </Link>
-      <div className="flex flex-col items-center font-semibold mt-2 md:flex-row lg:mt-0">
+      <div className="flex flex-col items-center font-semibold md:flex-row lg:mt-0">
         <Link href="/about">
           <button className="text-gray my-6 md:mr-10">
             What is Tao Voting?

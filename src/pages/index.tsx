@@ -4,7 +4,7 @@ import { HomeHero } from '../components/Home/Hero';
 
 export default function Home() {
   return (
-    <div className="2xl:h-screen bg-gray-0 flex flex-col justify-between">
+    <div className="md:h-screen h-full bg-gray-0 bg-home bg-no-repeat bg-cover flex flex-col justify-between">
       <Header />
       <HomeHero />
       <Footer />

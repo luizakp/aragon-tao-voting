@@ -3,7 +3,7 @@ import Link from 'next/link';
 export function HomeHero() {
   return (
     <div className="flex flex-col justify-center items-center px-6">
-      <div className="text-7xl flex-col leading-[102px] mb-11">
+      <div className="text-7xl flex-col leading-[102px]">
         <h1 className="text-center text-blue-100 font-semibold">
           The Future of Aragon
         </h1>
