@@ -15,7 +15,7 @@ const links = [
 
 export function Footer() {
   return (
-    <div className="lg:px-60 flex flex-col items-center justify-between lg:flex-row my-5">
+    <div className="flex flex-col items-center justify-between my-5 lg:flex-row lg:px-60">
       <div className="flex flex-col items-center lg:flex-row">
         <p>Magically crafted by:</p>
         <a
