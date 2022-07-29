@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export function AboutHero() {
   return (
-    <div className="bg-gray-50 bg-about bg-no-repeat bg-cover flex flex-col h-full px-20 lg:px-40 xl:px-64">
+    <div className="bg-gray-50 bg-about bg-no-repeat bg-cover flex flex-col h-full px-10 lg:px-40 xl:px-64">
       <h1 className="text-gray text-5xl font-semibold flex flex-col mt-32 leading-[65px]">
         <span>Getting familiar with</span>
         <span>the Tao configuration</span>
@@ -71,7 +71,7 @@ export function AboutHero() {
           {links.map((link) => {
             return (
               <div key={link.url} className="flex items-center text-blue">
-                <h4 className="text-[22px] hover:underline cursor-pointer mr-3">
+                <h4 className="text-[22px] hover:underline cursor-pointer pr-3">
                   {link.label}
                 </h4>
                 <Image

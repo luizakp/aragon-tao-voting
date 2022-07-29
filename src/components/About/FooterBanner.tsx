@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export function AboutFooterBanner() {
   return (
-    <div className="bg-aboutParameters bg-no-repeat bg-blue-100 flex flex-col justify-center py-28">
+    <div className="bg-aboutParameters bg-no-repeat bg-blue-100 flex flex-col justify-center py-28 bg-cover">
       <h1 className="text-gray text-7xl font-semibold text-center">
         Are you ready?
       </h1>

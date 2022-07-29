@@ -17,7 +17,6 @@ export function PageAnimation({ children }: Props) {
       animate="enter"
       exit="exit"
       transition={{ duration: 0.5 }}
-      className=""
     >
       {children}
     </motion.main>
