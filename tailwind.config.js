@@ -22,19 +22,21 @@ module.exports = {
         gray: {
           DEFAULT: '#20232C',
           0: '#F9FAFC',
-          50: '#DDE4E9',
-          100: '#ABBECF',
-          200: '#637381',
-          300: '#546992',
-          400: '#212B36',
-          500: '#1B1E2A',
+          50: '#F5F5F5',
+          100: '#DDE4E9',
+          200: '#ABBECF',
+          300: '#637381',
+          400: '#546992',
+          500: '#212B36',
+          600: '#1B1E2A',
         },
         blue: {
           DEFAULT: '#3164FA',
           0: '#B8D5F7',
           50: '#7CA7F9',
-          100: '#367BFF',
-          200: '#4724D6',
+          100: '#00A3FF',
+          200: '#367BFF',
+          300: '#4724D6',
         },
         cyan: {
           DEFAULT: '#0FEEF1',
@@ -49,6 +51,9 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         home: "url('/images/homeBg.svg')",
+        aboutBanner: "url('/images/aboutBanner.png')",
+        about: "url('/images/aboutBg.svg')",
+        aboutParameters: "url('/images/aboutParameters.png')",
       }),
     },
   },
@@ -56,4 +61,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-};
+}
