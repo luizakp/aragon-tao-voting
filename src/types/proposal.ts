@@ -12,3 +12,8 @@ export interface IProposalInfo {
   title: string
   strategy: string
 }
+
+export interface IImageInfo {
+  image: string
+  type: string
+}

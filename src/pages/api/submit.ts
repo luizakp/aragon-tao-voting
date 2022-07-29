@@ -10,6 +10,7 @@ export default async function handler(
   }
   const data = req.body
   const issueGenerator = new IssueGenerator(
+    data.imageInfo,
     data.proposalInfo,
     data.taoVoting,
     data.disputableVoting
@@ -17,4 +18,12 @@ export default async function handler(
   const response = await issueGenerator.createIssue()
   const result = await response.json()
   res.status(200).json({ data: result })
+}
+
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '15mb',
+    },
+  },
 }
