@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import aragonLogo from '../../public/images/aragonLogo.svg';
+import Image from 'next/image'
+import Link from 'next/link'
+import aragonLogo from '../../public/images/aragonLogo.svg'
 
 export function Header() {
   return (
@@ -26,5 +26,5 @@ export function Header() {
         </Link>
       </div>
     </div>
-  );
+  )
 }

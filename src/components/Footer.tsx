@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import GMLogo from '../../public/images/generalMagicLogo.svg';
-import TECLogo from '../../public/images/TECLogo.svg';
+import Image from 'next/image'
+import GMLogo from '../../public/images/generalMagicLogo.svg'
+import TECLogo from '../../public/images/TECLogo.svg'
 
 const links = [
   {
@@ -11,13 +11,13 @@ const links = [
     text: 'Terms and Conditions',
     url: 'https://aragon.org/terms-and-conditions',
   },
-];
+]
 
 export function Footer() {
   return (
-    <div className="flex flex-col items-center justify-between my-5 lg:flex-row lg:px-60">
+    <div className="w-full flex flex-col items-center justify-between py-5 lg:flex-row lg:px-60">
       <div className="flex flex-col items-center lg:flex-row">
-        <p>Magically crafted by:</p>
+        <p className="text-gray-400">Magically crafted by:</p>
         <a
           className="ml-5 mr-7 my-3"
           href={'https://twitter.com/generalmagicio'}
@@ -42,9 +42,9 @@ export function Footer() {
             >
               {link.text}
             </a>
-          );
+          )
         })}
       </div>
     </div>
-  );
+  )
 }

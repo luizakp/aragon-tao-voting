@@ -1,13 +1,13 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 export function HomeHero() {
   return (
     <div className="flex flex-col justify-center items-center px-6 mt-20">
       <div className="text-7xl flex-col leading-[102px]">
-        <h1 className="text-center text-blue-100 font-semibold">
+        <h1 className="text-center text-blue-200 font-semibold">
           The Future of Aragon
         </h1>
-        <h1 className="text-center">is in your hands</h1>
+        <h1 className="text-center text-gray">is in your hands</h1>
       </div>
       <div className="text-3xl text-gray text-center leading-10 mx-5 mt-10 2xl:mx-80 xl:mx-72 lg:mx-32 md:mx-12">
         <p>
@@ -26,5 +26,5 @@ export function HomeHero() {
         </button>
       </Link>
     </div>
-  );
+  )
 }
