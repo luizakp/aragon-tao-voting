@@ -20,7 +20,7 @@ export function HomeHero() {
           design of our governance.
         </p>
       </div>
-      <Link href="/configuration">
+      <Link href="/about">
         <button className="bg-white text-blue hover:text-white hover:bg-blue text-xl font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500">
           Learn More About Tao Voting
         </button>
