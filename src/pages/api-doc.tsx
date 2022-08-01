@@ -26,6 +26,10 @@ export const getStaticProps: GetStaticProps = async () => {
           url: 'http://localhost:3000',
           description: 'Local develpment server',
         },
+        {
+          url: 'https://aragon-tao-voting-api.vercel.app/',
+          description: 'Testing server',
+        },
       ],
     },
   })
