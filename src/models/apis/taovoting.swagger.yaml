@@ -1,0 +1,133 @@
+openapi: 3.0.0
+/api/tao-voting:
+  post:
+    summary: Returns the the output of the Tao Voting models
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              taoVoting:
+                $ref: '#/components/schemas/TaoVoting'
+              disputableVoting:
+                $ref: '#/components/schemas/DisputableVoting'
+    responses:
+      200:
+        description: A JSON object with the Tao Voting output.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    votingParams:
+                      type: object
+                      properties:
+                        supportRequired:
+                          type: number
+                          example: 0.85
+                        minimumQuorum:
+                          type: number
+                          example: 0.1
+                    taoVoting:
+                      type: object
+                      properties:
+                        totalProposalProcess:
+                          type: object
+                          properties:
+                            nonQuietVotingPeriod:
+                              type: number
+                              example: 1
+                            quietEndingPeriod:
+                              type: number
+                              example: 5
+                            executionDelay:
+                              type: number
+                              example: 9
+                        delegatedVoting:
+                          type: object
+                          properties:
+                            delegatedVotingPeriod:
+                              type: number
+                              example: 3
+                        proposalProcessWithExtension:
+                          type: object
+                          properties:
+                            voteDuration:
+                              type: number
+                              example: 6
+                            quietEndingPeriod:
+                              type: number
+                              example: 7
+                            executionDelay:
+                              type: number
+                              example: 9
+                    disputableVoting:
+                      type: object
+                      properties:
+                        proposalDeposit:
+                          type: object
+                          properties:
+                            token:
+                              type: number
+                              example: 2
+                            valueUsd:
+                              type: number
+                              example: 4.32
+                        challengeDeposit:
+                          type: object
+                          properties:
+                            token:
+                              type: number
+                              example: 1
+                            valueUsd:
+                              type: number
+                              example: 2.16
+                        setlementPeriod:
+                          type: number
+                          example: 4
+                    timelineData:
+                      type: object
+                      properties:
+                        timeVote:
+                          type: object
+                          properties:
+                            noExtension:
+                              type: number
+                              example: 6
+                            oneExtension:
+                              type: number
+                              example: 13
+                            twoExtensions:
+                              type: number
+                              example: 20
+                        timeReview:
+                          type: object
+                          properties:
+                            noExtension:
+                              type: number
+                              example: 3
+                            oneExtension:
+                              type: number
+                              example: 10
+                            twoExtensions:
+                              type: number
+                              example: 17
+                        timeExecute:
+                          type: object
+                          properties:
+                            noExtension:
+                              type: number
+                              example: 15
+                            oneExtension:
+                              type: number
+                              example: 22
+                            twoExtensions:
+                              type: number
+                              example: 29
+      405:
+        description: Method not allowed.

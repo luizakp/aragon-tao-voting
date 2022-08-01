@@ -1,8 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import aragonLogo from '../../public/images/aragonLogo.svg'
 
 export function Header() {
+  const router = useRouter()
+  const [isConfig, setIsConfig] = useState(false)
+
+  useEffect(() => {
+    if (router.pathname === '/configuration') {
+      setIsConfig(true)
+    }
+  }, [router.pathname])
   return (
     <div className="bg-white/40 py-6 px-11 flex flex-col items-center justify-between sticky top-0 z-50 lg:flex-row">
       <Link href="/">
@@ -19,11 +29,13 @@ export function Header() {
             What is Tao Voting?
           </button>
         </Link>
-        <Link href="/configuration">
-          <button className="bg-blue hover:bg-blue-200 text-white py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500">
-            Go to Configuration
-          </button>
-        </Link>
+        {!isConfig && (
+          <Link href="/configuration">
+            <button className="bg-blue hover:bg-blue-200 text-white py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500">
+              Go to Configuration
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   )

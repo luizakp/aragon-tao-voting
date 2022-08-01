@@ -1,0 +1,42 @@
+openapi: 3.0.0
+components:
+  schemas:
+    ProposalInfo:
+      description: Proposal title and strategy used.
+      type: object
+      properties:
+        title:
+          description: GitHub issue title.
+          type: string
+          example: Proposal title example
+        strategy:
+          description: Description of the strategy used to create the proposal.
+          type: string
+          example: Proposal strategy example
+
+    ProposalDBSchema:
+      description: Database schema of the Proposal data.
+      type: object
+      properties:
+        issueNumber:
+          description: Unique GitHub issue number.
+          format: uuid
+          type: string
+        proposalInfo:
+          $ref: '#/components/schemas/ProposalInfo'
+        taoVoting:
+          $ref: '#/components/schemas/TaoVoting'
+        disputableVoting:
+          $ref: '#/components/schemas/DisputableVoting'
+    ImageInfo:
+      description: Information about the image displayed in the proposal GitHub issue.
+      type: object
+      properties:
+        type:
+          description: Image format, the default value is base64.
+          type: string
+          example: base64
+        image:
+          description: Tao Voting chart image.
+          type: string
+          example: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=

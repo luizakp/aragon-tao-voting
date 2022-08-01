@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Manrope', 'Arial', 'sans-serif'],
+      over: ['Overpass', 'Arial', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -54,6 +55,7 @@ module.exports = {
         aboutBanner: "url('/images/aboutBanner.png')",
         about: "url('/images/aboutBg.svg')",
         aboutParameters: "url('/images/aboutParameters.png')",
+        config: "url('/images/configBg.png')",
       }),
     },
   },
