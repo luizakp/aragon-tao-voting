@@ -1,0 +1,37 @@
+openapi: 3.0.0
+/api/submit:
+  post:
+    summary: Receives a Tao Voting proposal, and creates a Github issue with it.
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              taoVoting:
+                $ref: '#/components/schemas/TaoVoting'
+              disputableVoting:
+                $ref: '#/components/schemas/DisputableVoting'
+              proposalInfo:
+                $ref: '#/components/schemas/ProposalInfo'
+              imageInfo:
+                $ref: '#/components/schemas/ImageInfo'
+
+    responses:
+      200:
+        description: A JSON object with the url of the generated issue.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    issueUrl:
+                      type: string
+                      example: https://github.com/GeneralMagicio/aragon-tao-voting/issues/33
+
+      405:
+        description: Method not allowed.

@@ -1,0 +1,19 @@
+openapi: 3.0.0
+components:
+  schemas:
+    DisputableVoting:
+      description: Any proposal that does not follow the Aragon covenant can be disputable and you get to choose under the costs and durations of the dispute.
+      type: object
+      properties:
+        proposalDeposit:
+          description: With Tao Voting, proposal creators must lock a set amount of funds as the collateral required to create a proposal. This amount of funds is the parameter “Proposal Deposit” and is set during the design phase. These funds are returned to the proposal creator when the proposal passes or fails.
+          type: number
+          example: 2
+        challengeDeposit:
+          description: If an individual believes that a certain proposal is malicious, contains an error, or is not in alignment with the Community Covenant, they can challenge the proposal by staking (and locking) a set amount of funds. This amount of funds is the parameter “Challenge Deposit” and is set during the design phase.
+          type: number
+          example: 1
+        settlementPeriod:
+          description: Essentially, if an individual believes that a certain proposal is malicious, contains an error, or is not in alignment with the Community Covenant, they can challenge the proposal. Once challenged, the proposal creator has a set amount of time, the “Settlement Period” to dispute the challenge by paying dispute fees and raising the issue to court, or to resolve the challenge by paying the Settlement Offer* and taking down their proposal. If they do not take action before the end of the Settlement Period, the proposal is automatically considered “settled”, is taken down, and the proposer gets back the Proposal Deposit minus the Settlement Offer.
+          type: number
+          example: 4

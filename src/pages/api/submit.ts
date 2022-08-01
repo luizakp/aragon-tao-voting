@@ -17,7 +17,7 @@ export default async function handler(
   )
   const response = await issueGenerator.createIssue()
   const result = await response.json()
-  res.status(200).json({ data: result })
+  res.status(200).json({ data: { issueUrl: result.html_url } })
 }
 
 export const config = {
