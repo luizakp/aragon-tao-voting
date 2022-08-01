@@ -5,5 +5,9 @@ import { IProposalDBSchema } from '../types/proposal'
 export async function saveProposalDB(proposalSchema: IProposalDBSchema) {
   await mongoose.connect(process.env.DB_CONNECTION || '')
   const proposal = new Proposal(proposalSchema)
-  proposal.save()
+  try {
+    proposal.save()
+  } catch (err) {
+    console.log(err)
+  }
 }
