@@ -1,0 +1,39 @@
+openapi: 3.0.0
+/api/import/{issueNumber}:
+  get:
+    summary: Returns a proposal data by its Github issue number.
+    parameters:
+      - name: issueNumber
+        in: path
+        required: true
+        description: GitHub issue number.
+        schema:
+          type: integer
+          format: int64
+          minimum: 1
+          example: 28
+    responses:
+      200:
+        description: A JSON object with the url of the generated issue.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    issueNumber:
+                      type: integer
+                      example: 28
+                    proposalInfo:
+                      $ref: '#/components/schemas/ProposalInfo'
+                    taoVoting:
+                      $ref: '#/components/schemas/TaoVoting'
+                    disputableVoting:
+                      $ref: '#/components/schemas/DisputableVoting'
+
+      405:
+        description: Method not allowed.
+      406:
+        description: There is no proposal in the database with the provided issue number.

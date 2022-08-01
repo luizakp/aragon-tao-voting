@@ -1,0 +1,35 @@
+openapi: 3.0.0
+components:
+  schemas:
+    TaoVoting:
+      description: Tao Voting is the voting process by which the DAO can modify its economic and governance settings post-upgrade.
+      type: object
+      properties:
+        supportRequired:
+          description: The Support Required (%) is the percentage of YES votes from the vote-total required for a proposal to pass.
+          type: number
+          example: 0.85
+        minimumQuorum:
+          description: The Minimum Quorum (%) is the percentage of all tokens from the total supply of ANT that must vote on a proposal in order for it to be valid.
+          type: number
+          example: 0.10
+        voteDuration:
+          description: This is the voting duration (days) of a proposal in Tao Voting. During this time ANT holders are allowed to vote on the proposal, users cannot take back their vote and users are only allowed to vote ONCE.
+          type: number
+          example: 6
+        delegatedVotingPeriod:
+          description: This is the period of time, within the Vote Duration, when delegates can cast votes that have been vested to them. When this period ends delegates can no longer vote.
+          type: number
+          example: 3
+        quietEndingPeriod:
+          description: This a the specified amount of time within the latter part of the Vote Duration. During the Quiet Ending Period if the voting outcomes changes from “yes” to “no” or vice versa it will trigger the Quiet Ending Extension. The Quiet Ending Period can only happen once during a vote. Voting will close normally if the outcome does not change during the Quiet Ending Period.
+          type: number
+          example: 5
+        quietEndingExtension:
+          description: This is the voting duration extension that triggers only from a vote outcome flipping during the Quiet Ending Period. This will add the specified amount of time to the vote duration allowing any voters (except Delegates) more time to vote. If an outcome is flipped again during the Quiet Ending Extension another extension will trigger. There is no limit on how many times an extension can be triggered. Voting closes once there is no change of outcome during this extension period.
+          type: number
+          example: 7
+        executionDelay:
+          description: The Execution Delay describes the required amount of time after a proposal passes for the proposal to be executed.
+          type: number
+          example: 9
