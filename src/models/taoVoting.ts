@@ -23,11 +23,11 @@ export class TaoVoting {
   }
 
   public async getData() {
+    const taoVotingInput = this.taoVoting
     function addQuietEndingExtension(initialValue: number, times = 1): number {
       return initialValue + times * taoVotingInput.quietEndingExtension
     }
 
-    const taoVotingInput = this.taoVoting
     const votingParams = {
       supportRequired: taoVotingInput.supportRequired,
       minimumQuorum: taoVotingInput.minimumQuorum,
