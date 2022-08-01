@@ -23,8 +23,7 @@ export class IssueGenerator {
   private async saveProposal(issueNumber: string) {
     const proposalSchema: IProposalDBSchema = {
       issueNumber: issueNumber,
-      title: this.proposalInfo.title,
-      strategy: this.proposalInfo.strategy,
+      proposalInfo: this.proposalInfo,
       taoVoting: this.taoVoting,
       disputableVoting: this.disputableVoting,
     }
