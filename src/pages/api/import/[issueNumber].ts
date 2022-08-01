@@ -23,7 +23,16 @@ export default async function handler(
           data: 'There is no proposal in the database with the provided issue number.',
         })
       } else {
-        res.status(200).json({ data: proposal })
+        const { issueNumber, proposalInfo, taoVoting, disputableVoting } =
+          proposal
+        res.status(200).json({
+          data: {
+            issueNumber,
+            proposalInfo,
+            taoVoting,
+            disputableVoting,
+          },
+        })
       }
     }
   )

@@ -2,8 +2,7 @@ import { ITaoVoting, IDisputableVoting } from './taoVoting'
 
 export interface IProposalDBSchema {
   issueNumber: string
-  title: string
-  strategy: string
+  proposalInfo: IProposalInfo
   taoVoting: ITaoVoting
   disputableVoting: IDisputableVoting
 }

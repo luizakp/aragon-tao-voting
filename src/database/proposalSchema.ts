@@ -2,8 +2,10 @@ import { model, models, Schema } from 'mongoose'
 
 const proposalSchema: Schema = new Schema({
   issueNumber: Number,
-  title: String,
-  strategy: String,
+  proposalInfo: {
+    title: String,
+    strategy: String,
+  },
   taoVoting: {
     supportRequired: Number,
     minimumQuorum: Number,
