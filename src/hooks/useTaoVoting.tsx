@@ -23,6 +23,15 @@ type TaoVotingContextType = {
     quietEndingExtension: number
     executionDelay: number
   }
+  proposalDeposit: {
+    token: number
+    valueUsd: number
+  }
+  challengeDeposit: {
+    token: number
+    valueUsd: number
+  }
+  setlementPeriod: number
   pieChart: { [key: string]: number }
   table?: { [key: string]: number[] }
   setContext: Dispatch<SetStateAction<TaoVotingContextType>>
@@ -42,6 +51,15 @@ const initialContext: TaoVotingContextType = {
     quietEndingExtension: 0,
     executionDelay: 0,
   },
+  proposalDeposit: {
+    token: 0,
+    valueUsd: 0,
+  },
+  challengeDeposit: {
+    token: 0,
+    valueUsd: 0,
+  },
+  setlementPeriod: 0,
   pieChart: {},
   setContext: (): void => {
     throw new Error('setContext must be overridden')
@@ -90,7 +108,7 @@ function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
         })
         .then((response) => {
           const output = response.data.data
-          setContext({ ...output.taoVoting })
+          setContext({ ...output.taoVoting, ...output.disputableVoting })
         })
         .catch((e) => console.log(e))
     }, 500)
