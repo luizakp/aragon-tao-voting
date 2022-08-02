@@ -6,7 +6,7 @@ import { SideBar } from './SideBar'
 import { Params } from './Params'
 
 export function Voting() {
-  const { barChart } = useTaoVoting()
+  const barChart = useTaoVoting()
   const {
     supportRequired,
     minimumQuorum,
@@ -20,6 +20,8 @@ export function Voting() {
     challengeDeposit,
     settlementPeriod,
   } = useParams()
+
+  console.log(barChart)
 
   const taoInputs = [
     {
@@ -130,19 +132,20 @@ export function Voting() {
               nonQuietVotingPeriod={
                 barChart.totalProposalProcess?.nonQuietVotingPeriod
               }
+              quietEndingPeriod={
+                barChart.totalProposalProcess?.quietEndingPeriod
+              }
+              executionDelay={barChart.totalProposalProcess?.executionDelay}
               delegatedVotingPeriod={
                 barChart.delegatedVoting?.delegatedVotingPeriod
               }
               delegatedAndNonDelegatedVoting={
                 barChart.proposalProcessWithExtension?.voteDuration
               }
-              quietEndingPeriod={
-                barChart.totalProposalProcess?.quietEndingPeriod
-              }
-              quietEndingExtension={
+              quietEndingPeriodWithExtension={
                 barChart.proposalProcessWithExtension?.quietEndingExtension
               }
-              executionDelay={
+              executionDelayWithExtension={
                 barChart.proposalProcessWithExtension?.executionDelay
               }
             />

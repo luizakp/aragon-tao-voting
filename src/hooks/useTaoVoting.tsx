@@ -65,8 +65,8 @@ function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
           },
         })
         .then((response) => {
-          const { output } = response.data
-          setContext({ ...output })
+          const output = response.data.data
+          setContext({ ...output.taoVoting })
         })
         .catch((e) => console.log(e))
     }, 500)
