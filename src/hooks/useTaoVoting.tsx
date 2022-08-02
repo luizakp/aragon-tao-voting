@@ -10,14 +10,38 @@ import api from '../services/api'
 import { useParams } from './useParams'
 
 type TaoVotingContextType = {
-  barChart: { [key: string]: { [key: string]: number } }
+  totalProposalProcess: {
+    nonQuietVotingPeriod: number
+    quietEndingPeriod: number
+    executionDelay: number
+  }
+  delegatedVoting: {
+    delegatedVotingPeriod: number
+  }
+  proposalProcessWithExtension: {
+    voteDuration: number
+    quietEndingExtension: number
+    executionDelay: number
+  }
   pieChart: { [key: string]: number }
   table?: { [key: string]: number[] }
   setContext: Dispatch<SetStateAction<TaoVotingContextType>>
 }
 
 const initialContext: TaoVotingContextType = {
-  barChart: {},
+  totalProposalProcess: {
+    nonQuietVotingPeriod: 0,
+    quietEndingPeriod: 0,
+    executionDelay: 0,
+  },
+  delegatedVoting: {
+    delegatedVotingPeriod: 0,
+  },
+  proposalProcessWithExtension: {
+    voteDuration: 0,
+    quietEndingExtension: 0,
+    executionDelay: 0,
+  },
   pieChart: {},
   setContext: (): void => {
     throw new Error('setContext must be overridden')

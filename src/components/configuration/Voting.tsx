@@ -21,8 +21,6 @@ export function Voting() {
     settlementPeriod,
   } = useParams()
 
-  console.log(barChart)
-
   const taoInputs = [
     {
       name: 'supportRequired',
@@ -121,13 +119,13 @@ export function Voting() {
 
   return (
     <>
-      <div className="min-h-screen h-full bg-dash bg-cover">
+      <div className="min-h-screen h-full bg-dash">
         <div className="flex">
           <SideBar submitProposal={!submitProposal}>
             <Params title="Tao Voting" inputParams={taoInputs} />
             <Params title="Disputable Voting" inputParams={disputableInputs} />
           </SideBar>
-          <ChartContainer title="See the relative distribution of each phase of Tao Voting, based on your parameters, in the graph below.">
+          <ChartContainer>
             <TaoVotingBar
               nonQuietVotingPeriod={
                 barChart.totalProposalProcess?.nonQuietVotingPeriod
@@ -139,9 +137,7 @@ export function Voting() {
               delegatedVotingPeriod={
                 barChart.delegatedVoting?.delegatedVotingPeriod
               }
-              delegatedAndNonDelegatedVoting={
-                barChart.proposalProcessWithExtension?.voteDuration
-              }
+              voteDuration={barChart.proposalProcessWithExtension?.voteDuration}
               quietEndingPeriodWithExtension={
                 barChart.proposalProcessWithExtension?.quietEndingExtension
               }

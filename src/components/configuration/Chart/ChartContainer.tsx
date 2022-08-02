@@ -3,7 +3,6 @@ import { motion, Variants } from 'framer-motion'
 
 interface ChartContainerProps {
   children: React.ReactNode
-  title: string
 }
 
 const titlesFade: Variants = {
@@ -17,20 +16,23 @@ const titlesFade: Variants = {
   },
 }
 
-function ChartContainer({ children, title }: ChartContainerProps) {
+function ChartContainer({ children }: ChartContainerProps) {
   return (
-    <div className="flex flex-col bg-transparent ml-6 mr-8 mt-4 w-3/5 pb-16 lg:min-w-2/4">
-      <motion.div
-        key={title}
-        animate="animate"
-        initial="initial"
-        variants={titlesFade}
-      >
-        <h1 className="font-bj text-gray-100 text-2xl text-center py-6 lg:text-left">
-          {title}
-        </h1>
+    <div className="flex flex-col bg-transparent ml-6 mr-8 mt-4 w-full">
+      <motion.div animate="animate" initial="initial" variants={titlesFade}>
+        <div className="flex justify-center">
+          <div className="text-gray text-[22px] font-semibold flex flex-col w-full text-center my-14">
+            <span>
+              See the relative distribution of each phase of Tao Voting, based
+              on your
+            </span>
+            <span>parameters, in the graph below.</span>
+          </div>
+        </div>
       </motion.div>
-      <motion.div layout>{children}</motion.div>
+      <motion.div layout className="flex items-center justify-center">
+        {children}
+      </motion.div>
     </div>
   )
 }
