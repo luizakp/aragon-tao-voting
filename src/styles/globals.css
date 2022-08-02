@@ -5,7 +5,10 @@
   }
   input[type='number']:hover,
   input[type='number']:focus {
-    -moz-appearance: number-input;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
   }
 }
 
