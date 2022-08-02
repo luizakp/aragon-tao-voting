@@ -3,7 +3,8 @@ import { useTaoVoting } from '../../hooks/useTaoVoting'
 import TaoVotingBar from './Chart/TaoVotingBar'
 import ChartContainer from './Chart/ChartContainer'
 import { SideBar } from './SideBar'
-import { Params } from './Params'
+import { Params } from './SideBar/Params'
+import { DisputableVoating } from './DisputableVoating'
 
 export function Voting() {
   const barChart = useTaoVoting()
@@ -40,6 +41,7 @@ export function Voting() {
       placeholder: '%',
       tooltipText:
         'The percent of all tokens that must vote YES on a proposal in order for it to be valid.',
+      interval: { min: 0 },
     },
     {
       name: 'voteDuration',
@@ -125,27 +127,34 @@ export function Voting() {
             <Params title="Tao Voting" inputParams={taoInputs} />
             <Params title="Disputable Voting" inputParams={disputableInputs} />
           </SideBar>
-          <ChartContainer>
-            <TaoVotingBar
-              nonQuietVotingPeriod={
-                barChart.totalProposalProcess?.nonQuietVotingPeriod
-              }
-              quietEndingPeriod={
-                barChart.totalProposalProcess?.quietEndingPeriod
-              }
-              executionDelay={barChart.totalProposalProcess?.executionDelay}
-              delegatedVotingPeriod={
-                barChart.delegatedVoting?.delegatedVotingPeriod
-              }
-              voteDuration={barChart.proposalProcessWithExtension?.voteDuration}
-              quietEndingPeriodWithExtension={
-                barChart.proposalProcessWithExtension?.quietEndingExtension
-              }
-              executionDelayWithExtension={
-                barChart.proposalProcessWithExtension?.executionDelay
-              }
-            />
-          </ChartContainer>
+          <div className="w-full divide-y divide-gray-100">
+            <ChartContainer>
+              <TaoVotingBar
+                nonQuietVotingPeriod={
+                  barChart.totalProposalProcess?.nonQuietVotingPeriod
+                }
+                quietEndingPeriod={
+                  barChart.totalProposalProcess?.quietEndingPeriod
+                }
+                executionDelay={barChart.totalProposalProcess?.executionDelay}
+                delegatedVotingPeriod={
+                  barChart.delegatedVoting?.delegatedVotingPeriod
+                }
+                voteDuration={
+                  barChart.proposalProcessWithExtension?.voteDuration
+                }
+                quietEndingPeriodWithExtension={
+                  barChart.proposalProcessWithExtension?.quietEndingExtension
+                }
+                executionDelayWithExtension={
+                  barChart.proposalProcessWithExtension?.executionDelay
+                }
+              />
+            </ChartContainer>
+            <div className="flex justify-center pt-16">
+              <DisputableVoating />
+            </div>
+          </div>
         </div>
       </div>
     </>

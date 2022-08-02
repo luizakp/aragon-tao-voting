@@ -1,4 +1,4 @@
-import { useParams } from '../../hooks/useParams'
+import { useParams } from '../../../hooks/useParams'
 import Input from './Input'
 
 interface inputType {
@@ -8,7 +8,7 @@ interface inputType {
   link: string
   placeholder: string
   tooltipText: string
-  interval?: { min: number; max: number }
+  interval?: { min?: number; max?: number }
 }
 
 interface ParamsProps {
