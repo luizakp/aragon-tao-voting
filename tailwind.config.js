@@ -34,7 +34,8 @@ module.exports = {
         },
         blue: {
           DEFAULT: '#3164FA',
-          0: '#B8D5F7',
+          0: '#EDF3F9',
+          20: '#B8D5F7',
           50: '#7CA7F9',
           100: '#00A3FF',
           200: '#367BFF',
@@ -57,6 +58,7 @@ module.exports = {
         about: "url('/images/aboutBg.svg')",
         aboutParameters: "url('/images/aboutParameters.png')",
         config: "url('/images/configBg.png')",
+        form: "url('/images/submitBg.png')",
       }),
     },
   },

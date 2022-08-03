@@ -17,7 +17,7 @@ export function Notification() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <div className="bg-blue-0/40 flex items-center justify-center relative">
+          <div className="bg-blue-20/40 flex items-center justify-center relative">
             <p className="py-[14px] text-center px-14">
               🎉🎉 Join our Param Parties to collaborate on the design of our
               governance. 🎉🎉
