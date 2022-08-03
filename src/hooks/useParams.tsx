@@ -19,8 +19,16 @@ type ParamsContextType = {
   challengeDeposit: number
   settlementPeriod: number
   submitProposal: boolean
+  proposalTitle: string
+  proposalDescription: string
+  imageType: string
+  image: string
   setParams: Dispatch<SetStateAction<ParamsContextType>>
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleChange: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void
 }
 
 export const initialParams: ParamsContextType = {
@@ -35,6 +43,10 @@ export const initialParams: ParamsContextType = {
   challengeDeposit: 400,
   settlementPeriod: 5,
   submitProposal: false,
+  proposalTitle: '',
+  proposalDescription: '',
+  imageType: '',
+  image: '',
   setParams: (): void => {
     throw new Error('setParams must be overridden')
   },
@@ -77,11 +89,15 @@ function ParamsProvider({ children }: AppParamsContextProps) {
     }
   }, [params])
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target
     setParams((previousParams) => ({
       ...previousParams,
-      [name]: Number(value),
+      [name]: value,
     }))
   }
 
