@@ -11,7 +11,8 @@ export function Header() {
   useEffect(() => {
     if (
       router.pathname === '/configuration' ||
-      router.pathname === '/submit-proposal'
+      router.pathname === '/submit-proposal' ||
+      router.pathname.includes('/import')
     ) {
       setIsConfig(true)
     }
