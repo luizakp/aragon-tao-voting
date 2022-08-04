@@ -82,7 +82,7 @@ ${this.proposalInfo.strategy}
     }) |
 | Settlement Period | ${setlementPeriod} day(s)           |
 
-### [FORK THIS PROPOSAL](http://config.tecommons.org/config/import/${issueNumber}) (link)
+### [FORK THIS PROPOSAL](https://aragon-tao-voting-five.vercel.app/import/${issueNumber}) (link)
 `
     return outputIssue
   }

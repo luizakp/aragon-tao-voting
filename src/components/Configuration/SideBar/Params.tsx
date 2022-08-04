@@ -3,7 +3,7 @@ import Input from './Input'
 
 interface inputType {
   name: string
-  value: number
+  value: string
   param: string
   link: string
   placeholder: string

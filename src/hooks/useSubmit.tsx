@@ -6,24 +6,21 @@ import {
   useEffect,
   useState,
 } from 'react'
-import api from '../services/api'
 import { useParams } from './useParams'
-import * as htmlToImage from 'html-to-image'
 
 type SubmitContextType = {
-  handleSubmitProposal: () => void
   isSubmitProposal: boolean
   dialog: boolean
   setDialog: Dispatch<SetStateAction<boolean>>
   loading: boolean
   url: string
   error: boolean
+  setLoading: Dispatch<SetStateAction<boolean>>
+  setUrl: Dispatch<SetStateAction<string>>
+  setError: Dispatch<SetStateAction<boolean>>
 }
 
 const initialContext: SubmitContextType = {
-  handleSubmitProposal: (): void => {
-    throw new Error('submitProposal must be overridden')
-  },
   isSubmitProposal: false,
   dialog: false,
   setDialog: (): void => {
@@ -32,6 +29,15 @@ const initialContext: SubmitContextType = {
   loading: false,
   url: '',
   error: false,
+  setLoading: (): void => {
+    throw new Error('setLoading must be overridden')
+  },
+  setUrl: (): void => {
+    throw new Error('setUrl must be overridden')
+  },
+  setError: (): void => {
+    throw new Error('setError must be overridden')
+  },
 }
 
 const SubmitContext = createContext<SubmitContextType>(initialContext)
@@ -60,8 +66,6 @@ function SubmitProvider({ children }: AppSubmitContextProps) {
     settlementPeriod,
     proposalTitle,
     proposalDescription,
-    imageType,
-    image,
   } = useParams()
 
   useEffect(() => {
@@ -99,59 +103,18 @@ function SubmitProvider({ children }: AppSubmitContextProps) {
     proposalDescription,
   ])
 
-  async function handleSubmitProposal() {
-    const typeTimeOut = setTimeout(() => {
-      setLoading(true)
-      api
-        .post('/submit/', {
-          taoVoting: {
-            supportRequired: Number(supportRequired) / 100,
-            minimumQuorum: Number(minimumQuorum) / 100,
-            voteDuration: voteDuration,
-            delegatedVotingPeriod: delegatedVotingPeriod,
-            quietEndingPeriod: quietEndingPeriod,
-            quietEndingExtension: quietEndingExtension,
-            executionDelay: executionDelay,
-          },
-          disputableVoting: {
-            proposalDeposit: proposalDeposit,
-            challengeDeposit: challengeDeposit,
-            settlementPeriod: settlementPeriod,
-          },
-          proposalInfo: {
-            title: proposalTitle,
-            strategy: proposalDescription,
-          },
-          imageInfo: {
-            type: imageType,
-            image: image,
-          },
-        })
-
-        .then((response) => {
-          setDialog(true)
-          setUrl(response.data.data.issueUrl)
-          setError(false)
-          setLoading(false)
-        })
-        .catch(() => {
-          setLoading(false)
-          setError(true)
-        })
-    }, 500)
-    return () => clearTimeout(typeTimeOut)
-  }
-
   return (
     <SubmitContext.Provider
       value={{
-        handleSubmitProposal,
         isSubmitProposal,
         dialog,
         loading,
         url,
         setDialog,
         error,
+        setLoading,
+        setUrl,
+        setError,
       }}
     >
       {children}

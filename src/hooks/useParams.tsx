@@ -22,7 +22,6 @@ type ParamsContextType = {
   proposalTitle: string
   proposalDescription: string
   imageType: string
-  image: string
   setParams: Dispatch<SetStateAction<ParamsContextType>>
   handleChange: (
     event:
@@ -45,8 +44,7 @@ export const initialParams: ParamsContextType = {
   submitProposal: false,
   proposalTitle: '',
   proposalDescription: '',
-  imageType: '',
-  image: '',
+  imageType: 'base64',
   setParams: (): void => {
     throw new Error('setParams must be overridden')
   },

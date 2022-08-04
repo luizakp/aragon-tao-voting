@@ -135,7 +135,7 @@ function TaoVotingBar({
   }
 
   return (
-    <div className="w-3/4" id="tao-chart">
+    <div className="w-3/4 bg-gray-50" id="tao-chart">
       <div className="px-9 pb-6 flex">
         <div className="flex flex-col justify-between text-center pt-14 pb-24 w-20">
           <ChartAxisLabel label="Voting Process" />

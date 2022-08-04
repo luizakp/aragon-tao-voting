@@ -2,9 +2,13 @@ import Link from 'next/link'
 import { useSubmit } from '../../hooks/useSubmit'
 import { Oval } from 'react-loader-spinner'
 
-export function Buttons() {
+interface ButtonProps {
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+export function Buttons({ onClick }: ButtonProps) {
   const { loading } = useSubmit()
-  const { handleSubmitProposal, isSubmitProposal } = useSubmit()
+  const { isSubmitProposal } = useSubmit()
   return (
     <div className="w-full flex justify-between px-44 py-9">
       <Link href="/configuration">
@@ -15,7 +19,7 @@ export function Buttons() {
       {loading === false ? (
         <button
           className="bg-blue disabled:cursor-default disabled:bg-blue-50 disabled:hover:bg-blue-50 w-72 disabled:hover:text-white disabled:hover:border-transparent text-white border border-transparent hover:text-blue hover:border-blue hover:bg-white font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500"
-          onClick={handleSubmitProposal}
+          onClick={onClick}
           disabled={!isSubmitProposal}
         >
           Submit Proposal
@@ -23,7 +27,6 @@ export function Buttons() {
       ) : (
         <button
           className="flex bg-blue justify-center w-72 text-white border border-transparent font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500"
-          onClick={handleSubmitProposal}
           disabled={!isSubmitProposal}
         >
           <Oval color="#ffff" height={16} width={16} />
