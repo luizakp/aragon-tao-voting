@@ -8,16 +8,16 @@ import {
 } from 'react'
 
 type ParamsContextType = {
-  supportRequired: number
-  minimumQuorum: number
-  voteDuration: number
-  delegatedVotingPeriod: number
-  quietEndingPeriod: number
-  quietEndingExtension: number
-  executionDelay: number
-  proposalDeposit: number
-  challengeDeposit: number
-  settlementPeriod: number
+  supportRequired: string
+  minimumQuorum: string
+  voteDuration: string
+  delegatedVotingPeriod: string
+  quietEndingPeriod: string
+  quietEndingExtension: string
+  executionDelay: string
+  proposalDeposit: string
+  challengeDeposit: string
+  settlementPeriod: string
   submitProposal: boolean
   proposalTitle: string
   proposalDescription: string
@@ -32,16 +32,16 @@ type ParamsContextType = {
 }
 
 export const initialParams: ParamsContextType = {
-  supportRequired: 88,
-  minimumQuorum: 8,
-  voteDuration: 7,
-  delegatedVotingPeriod: 5,
-  quietEndingPeriod: 3,
-  quietEndingExtension: 2,
-  executionDelay: 1,
-  proposalDeposit: 200,
-  challengeDeposit: 400,
-  settlementPeriod: 5,
+  supportRequired: '88',
+  minimumQuorum: '8',
+  voteDuration: '7',
+  delegatedVotingPeriod: '5',
+  quietEndingPeriod: '3',
+  quietEndingExtension: '2',
+  executionDelay: '1',
+  proposalDeposit: '200',
+  challengeDeposit: '400',
+  settlementPeriod: '5',
   submitProposal: false,
   proposalTitle: '',
   proposalDescription: '',

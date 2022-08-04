@@ -3,67 +3,35 @@ import {
   Dispatch,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from 'react'
 import api from '../services/api'
 import { useParams } from './useParams'
+import * as htmlToImage from 'html-to-image'
 
 type SubmitContextType = {
-  taoVoting: {
-    supportRequired: number
-    minimumQuorum: number
-    voteDuration: number
-    delegatedVotingPeriod: number
-    quietEndingPeriod: number
-    quietEndingExtension: number
-    executionDelay: number
-  }
-  disputableVoting: {
-    proposalDeposit: number
-    challengeDeposit: number
-    settlementPeriod: number
-  }
-  proposalInfo: {
-    title: string
-    strategy: string
-  }
-  imageInfo: {
-    type: string
-    image: string
-  }
-  setContext: Dispatch<SetStateAction<SubmitContextType>>
-  submitProposal: () => void
+  handleSubmitProposal: () => void
+  isSubmitProposal: boolean
+  dialog: boolean
+  setDialog: Dispatch<SetStateAction<boolean>>
+  loading: boolean
+  url: string
+  error: boolean
 }
 
 const initialContext: SubmitContextType = {
-  taoVoting: {
-    supportRequired: 0,
-    minimumQuorum: 0,
-    voteDuration: 0,
-    delegatedVotingPeriod: 0,
-    quietEndingPeriod: 0,
-    quietEndingExtension: 0,
-    executionDelay: 0,
-  },
-  disputableVoting: {
-    proposalDeposit: 0,
-    challengeDeposit: 0,
-    settlementPeriod: 0,
-  },
-  proposalInfo: {
-    title: '',
-    strategy: '',
-  },
-  imageInfo: {
-    type: '',
-    image: '',
-  },
-  setContext: (): void => {
-    throw new Error('setContext must be overridden')
-  },
-  submitProposal: (): void => {
+  handleSubmitProposal: (): void => {
     throw new Error('submitProposal must be overridden')
   },
+  isSubmitProposal: false,
+  dialog: false,
+  setDialog: (): void => {
+    throw new Error('setDialog must be overridden')
+  },
+  loading: false,
+  url: '',
+  error: false,
 }
 
 const SubmitContext = createContext<SubmitContextType>(initialContext)
@@ -73,7 +41,12 @@ interface AppSubmitContextProps {
 }
 
 function SubmitProvider({ children }: AppSubmitContextProps) {
-  const [params, setContext] = useState<SubmitContextType>(initialContext)
+  const [isSubmitProposal, setIsSubmitProposal] = useState<boolean>(false)
+  const [dialog, setDialog] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(false)
+  const [url, setUrl] = useState<string>('')
+
   const {
     supportRequired,
     minimumQuorum,
@@ -91,8 +64,44 @@ function SubmitProvider({ children }: AppSubmitContextProps) {
     image,
   } = useParams()
 
-  function submitProposal() {
+  useEffect(() => {
+    const checkEmpty = [
+      supportRequired,
+      minimumQuorum,
+      voteDuration,
+      delegatedVotingPeriod,
+      quietEndingPeriod,
+      quietEndingExtension,
+      executionDelay,
+      proposalDeposit,
+      challengeDeposit,
+      settlementPeriod,
+      proposalTitle,
+      proposalDescription,
+    ]
+    if (checkEmpty.includes('')) {
+      setIsSubmitProposal(false)
+    } else {
+      setIsSubmitProposal(true)
+    }
+  }, [
+    supportRequired,
+    minimumQuorum,
+    voteDuration,
+    delegatedVotingPeriod,
+    quietEndingPeriod,
+    quietEndingExtension,
+    executionDelay,
+    proposalDeposit,
+    challengeDeposit,
+    settlementPeriod,
+    proposalTitle,
+    proposalDescription,
+  ])
+
+  async function handleSubmitProposal() {
     const typeTimeOut = setTimeout(() => {
+      setLoading(true)
       api
         .post('/submit/', {
           taoVoting: {
@@ -118,17 +127,33 @@ function SubmitProvider({ children }: AppSubmitContextProps) {
             image: image,
           },
         })
+
         .then((response) => {
-          const { output } = response.data
-          setContext({ ...output })
+          setDialog(true)
+          setUrl(response.data.data.issueUrl)
+          setError(false)
+          setLoading(false)
         })
-        .catch((e) => console.log(e))
+        .catch(() => {
+          setLoading(false)
+          setError(true)
+        })
     }, 500)
     return () => clearTimeout(typeTimeOut)
   }
 
   return (
-    <SubmitContext.Provider value={{ ...params, submitProposal }}>
+    <SubmitContext.Provider
+      value={{
+        handleSubmitProposal,
+        isSubmitProposal,
+        dialog,
+        loading,
+        url,
+        setDialog,
+        error,
+      }}
+    >
       {children}
     </SubmitContext.Provider>
   )

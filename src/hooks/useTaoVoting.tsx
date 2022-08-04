@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   createContext,
   Dispatch,
@@ -6,7 +7,6 @@ import {
   useEffect,
   useState,
 } from 'react'
-import api from '../services/api'
 import { useParams } from './useParams'
 
 type TaoVotingContextType = {
@@ -34,6 +34,7 @@ type TaoVotingContextType = {
   setlementPeriod: number
   table?: { [key: string]: number[] }
   setContext: Dispatch<SetStateAction<TaoVotingContextType>>
+  isReviewProposal: boolean
 }
 
 const initialContext: TaoVotingContextType = {
@@ -62,6 +63,7 @@ const initialContext: TaoVotingContextType = {
   setContext: (): void => {
     throw new Error('setContext must be overridden')
   },
+  isReviewProposal: false,
 }
 
 const TaoVotingContext = createContext<TaoVotingContextType>(initialContext)
@@ -72,6 +74,7 @@ interface AppTaoVotingContextProps {
 
 function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
   const [params, setContext] = useState<TaoVotingContextType>(initialContext)
+  const [isReviewProposal, setReviewProposal] = useState<boolean>(false)
   const {
     supportRequired,
     minimumQuorum,
@@ -86,9 +89,26 @@ function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
   } = useParams()
 
   useEffect(() => {
+    const checkEmpty = [
+      supportRequired,
+      minimumQuorum,
+      voteDuration,
+      delegatedVotingPeriod,
+      quietEndingPeriod,
+      quietEndingExtension,
+      executionDelay,
+      proposalDeposit,
+      challengeDeposit,
+      settlementPeriod,
+    ]
+    if (checkEmpty.includes('')) {
+      setReviewProposal(false)
+    } else {
+      setReviewProposal(true)
+    }
     const typeTimeOut = setTimeout(() => {
-      api
-        .post('/tao-voting/', {
+      axios
+        .post('/api/tao-voting/', {
           taoVoting: {
             supportRequired: Number(supportRequired) / 100,
             minimumQuorum: Number(minimumQuorum) / 100,
@@ -128,7 +148,7 @@ function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
   ])
 
   return (
-    <TaoVotingContext.Provider value={{ ...params }}>
+    <TaoVotingContext.Provider value={{ ...params, isReviewProposal }}>
       {children}
     </TaoVotingContext.Provider>
   )
