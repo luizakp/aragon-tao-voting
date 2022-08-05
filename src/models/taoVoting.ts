@@ -53,11 +53,11 @@ export class TaoVoting {
     const disputableVoting = {
       proposalDeposit: {
         token: this.disputableVoting.proposalDeposit,
-        valueUsd: this.disputableVoting.proposalDeposit * tokenPrice,
+        valueUsd: Number((this.disputableVoting.proposalDeposit * tokenPrice).toFixed(2)),
       },
       challengeDeposit: {
         token: this.disputableVoting.challengeDeposit,
-        valueUsd: this.disputableVoting.challengeDeposit * tokenPrice,
+        valueUsd: Number((this.disputableVoting.challengeDeposit * tokenPrice).toFixed(2)),
       },
       setlementPeriod: this.disputableVoting.settlementPeriod,
     }
