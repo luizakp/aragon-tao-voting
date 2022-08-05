@@ -107,8 +107,10 @@ ${this.proposalInfo.strategy}
   }
 
   public async createIssue() {
+    const OWNER = process.env.GITHUB_OWNER || ''
+    const REPO = process.env.GITHUB_REPO || ''
     const response = await fetch(
-      'https://api.github.com/search/issues?q=repo:GeneralMagicio/aragon-tao-voting'
+      `https://api.github.com/search/issues?q=repo:${OWNER}/${REPO}`
     )
     const repoIssues = await response.json()
     const issueNumber = (repoIssues.total_count + 1).toString()
@@ -116,7 +118,7 @@ ${this.proposalInfo.strategy}
     const imageUrl = await this.uploadImageImgur()
 
     const reponse = await fetch(
-      'https://api.github.com/repos/GeneralMagicio/aragon-tao-voting/issues',
+      `https://api.github.com/repos/${OWNER}/${REPO}/issues`,
       {
         method: 'POST',
         headers: {
