@@ -9,7 +9,11 @@ export function Header() {
   const [isConfig, setIsConfig] = useState(false)
 
   useEffect(() => {
-    if (router.pathname === '/configuration') {
+    if (
+      router.pathname === '/configuration' ||
+      router.pathname === '/submit-proposal' ||
+      router.pathname.includes('/import')
+    ) {
       setIsConfig(true)
     }
   }, [router.pathname])
@@ -25,9 +29,7 @@ export function Header() {
       </Link>
       <div className="flex flex-col items-center font-semibold md:flex-row lg:mt-0">
         <Link href="/about">
-          <button className="text-gray my-6 md:mr-10">
-            What is Tao Voting?
-          </button>
+          <button className="text-gray my-6 md:mr-10">Learn more</button>
         </Link>
         {!isConfig && (
           <Link href="/configuration">

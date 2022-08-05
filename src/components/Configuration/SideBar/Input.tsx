@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import classnames from 'classnames'
-import { Tooltip } from './Tooltip'
-import useHover from '../../hooks/useHover'
-import { useParams } from '../../hooks/useParams'
+import useHover from '../../../hooks/useHover'
+import { useParams } from '../../../hooks/useParams'
+import { Tooltip } from '../Tooltip'
 
 interface InputProps {
   children?: React.ReactNode

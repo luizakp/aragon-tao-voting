@@ -1,3 +1,4 @@
+import axios from 'axios'
 import {
   createContext,
   Dispatch,
@@ -6,22 +7,63 @@ import {
   useEffect,
   useState,
 } from 'react'
-import api from '../services/api'
 import { useParams } from './useParams'
 
 type TaoVotingContextType = {
-  barChart: { [key: string]: { [key: string]: number } }
-  pieChart: { [key: string]: number }
+  totalProposalProcess: {
+    nonQuietVotingPeriod: number
+    quietEndingPeriod: number
+    executionDelay: number
+  }
+  delegatedVoting: {
+    delegatedVotingPeriod: number
+  }
+  proposalProcessWithExtension: {
+    voteDuration: number
+    quietEndingExtension: number
+    executionDelay: number
+  }
+  proposalDeposit: {
+    token: number
+    valueUsd: number
+  }
+  challengeDeposit: {
+    token: number
+    valueUsd: number
+  }
+  setlementPeriod: number
   table?: { [key: string]: number[] }
   setContext: Dispatch<SetStateAction<TaoVotingContextType>>
+  isReviewProposal: boolean
 }
 
 const initialContext: TaoVotingContextType = {
-  barChart: {},
-  pieChart: {},
+  totalProposalProcess: {
+    nonQuietVotingPeriod: 0,
+    quietEndingPeriod: 0,
+    executionDelay: 0,
+  },
+  delegatedVoting: {
+    delegatedVotingPeriod: 0,
+  },
+  proposalProcessWithExtension: {
+    voteDuration: 0,
+    quietEndingExtension: 0,
+    executionDelay: 0,
+  },
+  proposalDeposit: {
+    token: 0,
+    valueUsd: 0,
+  },
+  challengeDeposit: {
+    token: 0,
+    valueUsd: 0,
+  },
+  setlementPeriod: 0,
   setContext: (): void => {
     throw new Error('setContext must be overridden')
   },
+  isReviewProposal: false,
 }
 
 const TaoVotingContext = createContext<TaoVotingContextType>(initialContext)
@@ -32,6 +74,7 @@ interface AppTaoVotingContextProps {
 
 function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
   const [params, setContext] = useState<TaoVotingContextType>(initialContext)
+  const [isReviewProposal, setReviewProposal] = useState<boolean>(false)
   const {
     supportRequired,
     minimumQuorum,
@@ -46,9 +89,26 @@ function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
   } = useParams()
 
   useEffect(() => {
+    const checkEmpty = [
+      supportRequired,
+      minimumQuorum,
+      voteDuration,
+      delegatedVotingPeriod,
+      quietEndingPeriod,
+      quietEndingExtension,
+      executionDelay,
+      proposalDeposit,
+      challengeDeposit,
+      settlementPeriod,
+    ]
+    if (checkEmpty.includes('')) {
+      setReviewProposal(false)
+    } else {
+      setReviewProposal(true)
+    }
     const typeTimeOut = setTimeout(() => {
-      api
-        .post('/tao-voting/', {
+      axios
+        .post('/api/tao-voting/', {
           taoVoting: {
             supportRequired: Number(supportRequired) / 100,
             minimumQuorum: Number(minimumQuorum) / 100,
@@ -65,8 +125,11 @@ function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
           },
         })
         .then((response) => {
-          const { output } = response.data
-          setContext({ ...output })
+          const output = response.data.data
+          setContext({
+            ...output.taoVoting,
+            ...output.disputableVoting,
+          })
         })
         .catch((e) => console.log(e))
     }, 500)
@@ -85,7 +148,7 @@ function TaoVotingProvider({ children }: AppTaoVotingContextProps) {
   ])
 
   return (
-    <TaoVotingContext.Provider value={{ ...params }}>
+    <TaoVotingContext.Provider value={{ ...params, isReviewProposal }}>
       {children}
     </TaoVotingContext.Provider>
   )

@@ -21,10 +21,10 @@ export function SideBar({ children, minWidth, submitProposal }: SideBarProps) {
     >
       {children}
       <div className="my-8 w-full">
-        <Link href="/about">
+        <Link href="/submit-proposal">
           <button
             disabled={submitProposal}
-            className="bg-blue text-white hover:text-blue-300 hover:bg-blue-0 font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500 w-full"
+            className="bg-blue text-white border-2 border-transparent hover:text-blue hover:border-blue hover:border-2 hover:bg-white font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500 w-full"
           >
             Review Proposal
           </button>

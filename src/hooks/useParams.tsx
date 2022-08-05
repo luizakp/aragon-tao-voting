@@ -8,33 +8,43 @@ import {
 } from 'react'
 
 type ParamsContextType = {
-  supportRequired: number
-  minimumQuorum: number
-  voteDuration: number
-  delegatedVotingPeriod: number
-  quietEndingPeriod: number
-  quietEndingExtension: number
-  executionDelay: number
-  proposalDeposit: number
-  challengeDeposit: number
-  settlementPeriod: number
+  supportRequired: string
+  minimumQuorum: string
+  voteDuration: string
+  delegatedVotingPeriod: string
+  quietEndingPeriod: string
+  quietEndingExtension: string
+  executionDelay: string
+  proposalDeposit: string
+  challengeDeposit: string
+  settlementPeriod: string
   submitProposal: boolean
+  proposalTitle: string
+  proposalDescription: string
+  imageType: string
   setParams: Dispatch<SetStateAction<ParamsContextType>>
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  handleChange: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => void
 }
 
 export const initialParams: ParamsContextType = {
-  supportRequired: 88,
-  minimumQuorum: 8,
-  voteDuration: 7,
-  delegatedVotingPeriod: 5,
-  quietEndingPeriod: 3,
-  quietEndingExtension: 2,
-  executionDelay: 1,
-  proposalDeposit: 200,
-  challengeDeposit: 400,
-  settlementPeriod: 5,
+  supportRequired: '88',
+  minimumQuorum: '8',
+  voteDuration: '7',
+  delegatedVotingPeriod: '5',
+  quietEndingPeriod: '3',
+  quietEndingExtension: '2',
+  executionDelay: '1',
+  proposalDeposit: '200',
+  challengeDeposit: '400',
+  settlementPeriod: '5',
   submitProposal: false,
+  proposalTitle: '',
+  proposalDescription: '',
+  imageType: 'base64',
   setParams: (): void => {
     throw new Error('setParams must be overridden')
   },
@@ -77,11 +87,15 @@ function ParamsProvider({ children }: AppParamsContextProps) {
     }
   }, [params])
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target
     setParams((previousParams) => ({
       ...previousParams,
-      [name]: Number(value),
+      [name]: value,
     }))
   }
 
