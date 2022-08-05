@@ -51,18 +51,23 @@ function Import() {
         .get(`/api/import/${issueNumber}/`)
         .then((response) => {
           const taoVotingRaw = response.data.data.taoVoting
+          const proposalInfoRaw = response.data.data.proposalInfo
           const taoVoting = {
             delegatedVotingPeriod: taoVotingRaw.delegatedVotingPeriod,
             executionDelay: taoVotingRaw.executionDelay,
-            minimumQuorum: Number(taoVotingRaw.executionDelay) * 100,
+            minimumQuorum: Number(taoVotingRaw.minimumQuorum) * 100,
             quietEndingExtension: taoVotingRaw.quietEndingExtension,
             quietEndingPeriod: taoVotingRaw.quietEndingPeriod,
             supportRequired: Number(taoVotingRaw.supportRequired) * 100,
             voteDuration: taoVotingRaw.voteDuration,
           }
+          const proposalInfo = {
+            proposalTitle: proposalInfoRaw.title,
+            proposalDescription: proposalInfoRaw.strategy,
+          }
           setParams({
             ...response.data.data.disputableVoting,
-            ...response.data.data.proposalInfo,
+            ...proposalInfo,
             ...taoVoting,
           })
           setIsLoading(response.status)

@@ -1,5 +1,5 @@
 import { Header } from '../components/Header'
-import { SubmitForm } from '../components/Submit/Banner'
+import { SubmitForm } from '../components/Submit/Form'
 import { Buttons } from '../components/Submit/Buttons'
 import { SubmitHero } from '../components/Submit/Hero'
 import { MyDialog } from '../components/Submit/Modal/SubmitModal'
@@ -46,7 +46,6 @@ export default function SubmitProposal() {
 
   async function handleSubmitProposal() {
     const taoChart = await getImage('tao-chart')
-    console.log(taoChart)
     const typeTimeOut = setTimeout(() => {
       setLoading(true)
       api

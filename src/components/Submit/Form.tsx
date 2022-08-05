@@ -2,12 +2,13 @@ import classnames from 'classnames'
 import { useParams } from '../../hooks/useParams'
 
 export function SubmitForm() {
-  const { handleChange } = useParams()
+  const { handleChange, proposalTitle, proposalDescription } = useParams()
   const inputs = [
     {
       title: 'Submission Title',
       name: 'proposalTitle',
       placeholder: 'Pick a good title for your submission...',
+      value: proposalTitle,
       height: 'h-10',
     },
     {
@@ -15,6 +16,7 @@ export function SubmitForm() {
       name: 'proposalDescription',
       placeholder:
         'Explain the big picture of your Configuration.. don’t forget to mention if your proposal is a fork of another...',
+      value: proposalDescription,
       height: 'h-32',
     },
   ]
@@ -34,6 +36,7 @@ export function SubmitForm() {
               )}
               placeholder={input.placeholder}
               name={input.name}
+              value={input.value}
               onChange={handleChange}
             />
           </div>
