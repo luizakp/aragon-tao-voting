@@ -30,12 +30,12 @@ export function Footer() {
           <Image src={TECLogo} alt="TEC" />
         </a>
       </div>
-      <div className="text-blue flex">
+      <div className="text-blue flex flex-col lg:flex-row items-center">
         {links.map((link) => {
           return (
             <a
               key={link.url}
-              className="mr-4 hover:underline"
+              className="my-3 lg:my-0 lg:mr-4 hover:underline"
               href={link.url}
               target="_blank"
               rel="noreferrer"
