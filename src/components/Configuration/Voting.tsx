@@ -122,7 +122,7 @@ export function Voting() {
   return (
     <>
       <div className="min-h-screen h-full bg-dash">
-        <div className="flex">
+        <div className="flex flex-col-reverse md:flex-row">
           <SideBar submitProposal={!submitProposal}>
             <Params title="Tao Voting" inputParams={taoInputs} />
             <Params title="Disputable Voting" inputParams={disputableInputs} />

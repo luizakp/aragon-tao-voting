@@ -18,10 +18,10 @@ const titlesFade: Variants = {
 
 function ChartContainer({ children }: ChartContainerProps) {
   return (
-    <div className="flex flex-col bg-transparent ml-6 mr-8 mt-4 w-full">
+    <div className="flex flex-col bg-transparent  mt-4 w-full">
       <motion.div animate="animate" initial="initial" variants={titlesFade}>
         <div className="flex justify-center">
-          <div className="text-gray text-[22px] font-semibold flex flex-col w-full text-center my-14">
+          <div className="text-gray text-[22px] font-semibold flex flex-col w-full text-center my-14 px-20">
             <span>
               See the relative distribution of each phase of Tao Voting, based
               on your

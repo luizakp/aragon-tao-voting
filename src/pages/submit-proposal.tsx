@@ -118,23 +118,27 @@ export default function SubmitProposal() {
           className="flex flex-col items-center justify-center"
         >
           <h3 className="font-bold text-gray">Tao Voting Chart</h3>
-          <TaoVotingBar
-            nonQuietVotingPeriod={
-              barChart.totalProposalProcess?.nonQuietVotingPeriod
-            }
-            quietEndingPeriod={barChart.totalProposalProcess?.quietEndingPeriod}
-            executionDelay={barChart.totalProposalProcess?.executionDelay}
-            delegatedVotingPeriod={
-              barChart.delegatedVoting?.delegatedVotingPeriod
-            }
-            voteDuration={barChart.proposalProcessWithExtension?.voteDuration}
-            quietEndingPeriodWithExtension={
-              barChart.proposalProcessWithExtension?.quietEndingExtension
-            }
-            executionDelayWithExtension={
-              barChart.proposalProcessWithExtension?.executionDelay
-            }
-          />
+          <div id="tao-chart" className="flex w-full justify-center bg-gray-50">
+            <TaoVotingBar
+              nonQuietVotingPeriod={
+                barChart.totalProposalProcess?.nonQuietVotingPeriod
+              }
+              quietEndingPeriod={
+                barChart.totalProposalProcess?.quietEndingPeriod
+              }
+              executionDelay={barChart.totalProposalProcess?.executionDelay}
+              delegatedVotingPeriod={
+                barChart.delegatedVoting?.delegatedVotingPeriod
+              }
+              voteDuration={barChart.proposalProcessWithExtension?.voteDuration}
+              quietEndingPeriodWithExtension={
+                barChart.proposalProcessWithExtension?.quietEndingExtension
+              }
+              executionDelayWithExtension={
+                barChart.proposalProcessWithExtension?.executionDelay
+              }
+            />
+          </div>
         </motion.div>
       </div>
       <Buttons onClick={handleSubmitProposal} />
