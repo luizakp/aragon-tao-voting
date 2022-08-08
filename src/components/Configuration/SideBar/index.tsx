@@ -13,7 +13,7 @@ export function SideBar({ children, minWidth, submitProposal }: SideBarProps) {
   return (
     <div
       className={classnames(
-        'min-h-screen flex flex-col bg-white w-96 px-12 shadow-lg justify-between',
+        'min-h-screen flex flex-col bg-white md:w-96 px-12 shadow-lg justify-between',
         {
           'min-w-2/5': minWidth,
         }

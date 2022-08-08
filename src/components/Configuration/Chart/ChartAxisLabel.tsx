@@ -18,7 +18,7 @@ function ChartAxisLabel({ label, rotate, tooltipText }: ChartAxisLabelProps) {
       <span
         ref={hoverRef}
         className={classnames(
-          'text-gray-600 uppercase text-[10px] font-over font-semibold text-end',
+          'text-gray-600 uppercase text-[8px] lg:text-[10px] font-over font-semibold text-end',
           rotate &&
             'block transform -rotate-90 w-56 text-center pt-2 tablet:pt-10 laptop:pt-18 desktop:pt-28'
         )}

@@ -9,7 +9,7 @@ export function SubmitSummary({ title, cards }: SubmitSumarryProps) {
   return (
     <div className="w-full pt-10">
       <h3 className="uppercase font-semibold text-gray">{title}</h3>
-      <div className="grid grid-cols-5 gap-10 mt-9">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-9">
         {cards.map((card) => {
           return (
             <SubmitCard
