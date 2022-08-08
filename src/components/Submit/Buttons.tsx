@@ -10,9 +10,9 @@ export function Buttons({ onClick }: ButtonProps) {
   const { loading } = useSubmit()
   const { isSubmitProposal } = useSubmit()
   return (
-    <div className="w-full flex justify-between px-44 py-9">
+    <div className="w-full flex flex-col justify-between lg:flex-row lg:px-44 py-9 items-center">
       <Link href="/configuration">
-        <button className="w-72 bg-[#F6F9FC] text-blue hover:text-white hover:bg-blue border border-blue font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500">
+        <button className="w-72 bg-[#F6F9FC] text-blue hover:text-white hover:bg-blue border border-blue font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500 mb-9 lg:mb-0">
           Return to Configuration
         </button>
       </Link>

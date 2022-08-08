@@ -112,7 +112,7 @@ export default function SubmitProposal() {
       <MyDialog />
       <SubmitHero />
       <SubmitForm />
-      <div className="flex flex-col bg-transparent ml-6 mr-8 mt-20 w-full">
+      <div className="flex flex-col bg-transparent md:ml-6 md:mr-8 mt-20 w-full">
         <motion.div
           layout
           className="flex flex-col items-center justify-center"

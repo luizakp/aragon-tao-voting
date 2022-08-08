@@ -115,46 +115,46 @@ function TaoVotingBar({
         data: [nonQuietVotingPeriod, delegatedVotingPeriod, voteDuration],
         backgroundColor: ['#C9BEF1', '#4724D6', '#95ECFF'],
         borderWidth: 1,
-        barThickness: 46,
+        maxBarThickness: 46,
       },
       {
         label: 'Second bar',
         data: [quietEndingPeriod, 0, quietEndingPeriodWithExtension],
         backgroundColor: ['#7D80EB', '', '#08BEE5'],
         borderWidth: 1,
-        barThickness: 46,
+        maxBarThickness: 46,
       },
       {
         label: 'Third bar',
         data: [executionDelay, 0, executionDelayWithExtension],
         backgroundColor: ['#0792AF', '', '#0792AF'],
         borderWidth: 1,
-        barThickness: 46,
+        maxBarThickness: 46,
       },
     ],
   }
 
   return (
-    <div className="w-3/4 bg-gray-50" id="tao-chart">
-      <div className="px-9 pb-6 flex">
-        <div className="flex flex-col justify-between text-center pt-14 pb-24 w-20">
+    <div className="lg:w-3/4 bg-gray-50" id="tao-chart">
+      <div className="sm:px-9 pb-6 flex">
+        <div className="flex flex-col justify-between text-center pl-4 pt-2 sm:pt-6 sm:pb-10 lg:pt-14 lg:pb-24 w-20">
           <ChartAxisLabel label="Voting Process" />
           <ChartAxisLabel label="Delegated voting" />
           <ChartAxisLabel label="Voting Process with an Extension" />
         </div>
         <div className="w-full flex">
-          <div className="w-9/12 mb-8">
+          <div className="w-9/12 sm:mb-8">
             <Bar data={data} options={options} height={140} />
           </div>
-          <div className="self-end mb-8 ml-3">
+          <div className="self-end sm:mb-8 ml-3">
             <ChartAxisLabel
-              label="time (days)"
+              label="time in days"
               tooltipText="The amount of time allocated to each phase of the voting process."
             />
           </div>
         </div>
       </div>
-      <div className="grid grid-rows-2 grid-flow-col text-gray pl-14 pb-6">
+      <div className="grid grid-rows-2 grid-flow-col text-gray pl-3 md:pl-14 pb-6">
         {barChartLegend.map((legend, index) => (
           <ChartLegend
             key={index}
