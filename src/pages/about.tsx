@@ -13,7 +13,7 @@ export default function About() {
         <AboutBanner />
         <AboutHero />
         <AboutFooterBanner />
-        <div className="h-44 bg-gray-50 flex">
+        <div className="lg:h-44 bg-gray-50 flex">
           <Footer />
         </div>
       </PageAnimation>

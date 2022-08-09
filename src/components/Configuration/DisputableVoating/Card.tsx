@@ -30,13 +30,13 @@ export function Card({
       <h3 className="font-over font-light text-gray-300 mb-7 text-center">
         {title}
       </h3>
-      <div className="w-48 h-48 flex justify-center">
+      <div className="w-48 h-48 lg:flex justify-center hidden">
         <Image src={image} alt={title} width={width} height={height} />
       </div>
       {valueType === 'currency' && value && (
         <div className="grid gap-y-1 grid-rows-3 items-center justify-center">
           <div className="flex items-center">
-            <div>
+            <div className='hidden lg:flex md:item-center'>
               <Image
                 src={aragonToken}
                 alt="Aragon Token"
