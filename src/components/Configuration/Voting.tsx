@@ -5,9 +5,12 @@ import ChartContainer from './Chart/ChartContainer'
 import { SideBar } from './SideBar'
 import { Params } from './SideBar/Params'
 import { DisputableVoating } from './DisputableVoating'
+import Link from 'next/link'
+import { ChartToogle } from './Chart/ChartToogle'
 
 export function Voting() {
   const barChart = useTaoVoting()
+  const { isChartOpen } = useTaoVoting()
   const {
     supportRequired,
     minimumQuorum,
@@ -55,7 +58,7 @@ export function Voting() {
       name: 'delegatedVotingPeriod',
       value: delegatedVotingPeriod,
       param: 'Delegated Voting Period',
-      link: 'https: //forum.aragon.org/t/tao-voting-delegated-voting-period/3666',
+      link: 'https://forum.aragon.org/t/tao-voting-delegated-voting-period/3666',
       placeholder: 'days',
       tooltipText:
         'The amount of time within the Vote Duration that delegates are permitted to vote on a proposal.',
@@ -64,7 +67,7 @@ export function Voting() {
       name: 'quietEndingPeriod',
       value: quietEndingPeriod,
       param: 'Quiet Ending Period',
-      link: 'https: //forum.aragon.org/t/tao-voting-quiet-ending-period-and-quiet-ending-extension/3667',
+      link: 'https://forum.aragon.org/t/tao-voting-quiet-ending-period-and-quiet-ending-extension/3667',
       placeholder: 'days',
       tooltipText:
         'If the voting outcome changes during this time the Quiet Ending Extension will trigger, extending the Vote Duration.',
@@ -73,7 +76,7 @@ export function Voting() {
       name: 'quietEndingExtension',
       value: quietEndingExtension,
       param: 'Quiet Ending Extension',
-      link: 'https://forum.tecommons.org/t/tao-voting-quiet-ending-period-and-quiet-ending-extension/488',
+      link: 'https://forum.aragon.org/t/tao-voting-quiet-ending-period-and-quiet-ending-extension/3667',
       placeholder: 'days',
       tooltipText:
         'The amount of time added to the Vote Duration resulting from the vote outcome changing during the Quiet Ending.',
@@ -82,7 +85,7 @@ export function Voting() {
       name: 'executionDelay',
       value: executionDelay,
       param: 'Execution Delay',
-      link: 'https: //forum.aragon.org/t/tao-voting-execution-delay/3668',
+      link: 'https://forum.aragon.org/t/tao-voting-execution-delay/3668',
       placeholder: 'days',
       tooltipText:
         'The amount of time after a vote passes before the proposed action is executed',
@@ -122,38 +125,50 @@ export function Voting() {
   return (
     <>
       <div className="min-h-screen h-full bg-dash">
-        <div className="flex flex-col-reverse md:flex-row">
+        <div className="flex flex-col md:flex-row">
           <SideBar submitProposal={!submitProposal}>
             <Params title="Tao Voting" inputParams={taoInputs} />
             <Params title="Disputable Voting" inputParams={disputableInputs} />
           </SideBar>
           <div className="w-full divide-y divide-gray-100">
-            <ChartContainer>
-              <TaoVotingBar
-                nonQuietVotingPeriod={
-                  barChart.totalProposalProcess?.nonQuietVotingPeriod
-                }
-                quietEndingPeriod={
-                  barChart.totalProposalProcess?.quietEndingPeriod
-                }
-                executionDelay={barChart.totalProposalProcess?.executionDelay}
-                delegatedVotingPeriod={
-                  barChart.delegatedVoting?.delegatedVotingPeriod
-                }
-                voteDuration={
-                  barChart.proposalProcessWithExtension?.voteDuration
-                }
-                quietEndingPeriodWithExtension={
-                  barChart.proposalProcessWithExtension?.quietEndingExtension
-                }
-                executionDelayWithExtension={
-                  barChart.proposalProcessWithExtension?.executionDelay
-                }
-              />
-            </ChartContainer>
+            {isChartOpen && (
+              <ChartContainer>
+                <TaoVotingBar
+                  nonQuietVotingPeriod={
+                    barChart.totalProposalProcess?.nonQuietVotingPeriod
+                  }
+                  quietEndingPeriod={
+                    barChart.totalProposalProcess?.quietEndingPeriod
+                  }
+                  executionDelay={barChart.totalProposalProcess?.executionDelay}
+                  delegatedVotingPeriod={
+                    barChart.delegatedVoting?.delegatedVotingPeriod
+                  }
+                  voteDuration={
+                    barChart.proposalProcessWithExtension?.voteDuration
+                  }
+                  quietEndingPeriodWithExtension={
+                    barChart.proposalProcessWithExtension?.quietEndingExtension
+                  }
+                  executionDelayWithExtension={
+                    barChart.proposalProcessWithExtension?.executionDelay
+                  }
+                />
+              </ChartContainer>
+            )}
             <div className="flex justify-center pt-16">
               <DisputableVoating />
             </div>
+          </div>
+          <ChartToogle />
+          <div className="my-8 w-full md:hidden flex px-12">
+            <Link href="/submit-proposal">
+              <button
+                className="bg-blue text-white border-2 border-transparent hover:text-blue hover:border-blue hover:border-2 hover:bg-white font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500 w-full"
+              >
+                Review Proposal
+              </button>
+            </Link>
           </div>
         </div>
       </div>
