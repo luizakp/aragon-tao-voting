@@ -31,7 +31,7 @@ export function DisputableVoating() {
   ]
 
   return (
-    <div className="grid md:grid-cols-3 w-2/3 gap-8 mb-10 md:mb-0">
+    <div className="grid grid-cols-3 w-2/3 gap-8">
       {disputableOutputs.map((disputableOutput) => {
         return (
           <Card

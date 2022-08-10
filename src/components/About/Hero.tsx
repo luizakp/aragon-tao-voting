@@ -7,7 +7,7 @@ import Image from 'next/image'
 export function AboutHero() {
   return (
     <div className="bg-gray-50 bg-about bg-no-repeat bg-cover flex flex-col h-full px-10 lg:px-40 xl:px-64">
-      <h1 className="text-gray text-5xl font-semibold flex flex-col mt-32 leading-[65px]">
+      <h1 className="text-gray text-5xl font-semibold flex flex-col mt-10 md:mt-32 leading-[65px]">
         <span>Getting familiar with</span>
         <span>the Tao configuration</span>
       </h1>
@@ -16,7 +16,7 @@ export function AboutHero() {
         <span>Parameters within the different components will be able</span>
         <span>to be modified after they have been implemented.</span>
       </p>
-      <div className="grid lg:grid-cols-2 gap-x-14 gap-y-10 mb-40">
+      <div className="grid lg:grid-cols-2 gap-x-14 gap-y-10 mb-20 md:mb-40">
         {cards.map((card) => {
           return (
             <AboutCard
@@ -63,17 +63,22 @@ export function AboutHero() {
         title={bulletsContent[1].title}
         bullets={bulletsContent[1].bullets}
       />
-      <div className="mt-[120px]">
+      <div className="mt-10 md:mt-[120px]">
         <h2 className="text-gray text-3xl font-semibold">
           If you need more information please check the links below.
         </h2>
-        <div className="mt-10 grid gap-y-2 mb-56">
+        <div className="mt-10 grid gap-y-2 mb-20 md:mb-56">
           {links.map((link) => {
             return (
               <div key={link.url} className="flex items-center text-blue">
-                <h4 className="text-[22px] hover:underline cursor-pointer pr-3">
+                <a 
+                  href={link.url} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="text-[22px] hover:underline cursor-pointer pr-3"
+                >
                   {link.label}
-                </h4>
+                </a>
                 <Image
                   src={externalLink}
                   alt="Link"

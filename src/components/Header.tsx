@@ -20,7 +20,7 @@ export function Header() {
     }
   }, [router.pathname])
   return (
-    <div className="bg-white/40 p-6 md:px-11 flex items-center justify-between sticky top-0 z-50">
+    <div className="bg-white md:bg-white/40 p-6 md:px-11 flex items-center justify-between sticky top-0 z-50">
       <Link href="/">
         <button className="flex items-center">
           <div className="flex md:hidden">
@@ -44,7 +44,7 @@ export function Header() {
               <button className="hidden md:flex bg-blue hover:bg-blue-200 text-white py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500">
                 Go to Configuration
               </button>
-              <button className="flex md:hidden bg-blue hover:bg-blue-200 text-white rounded-full p-3 drop-shadow-sm transition ease-in-out duration-500">
+              <button className="flex md:hidden bg-blue hover:bg-blue-200 text-white rounded-full p-2 drop-shadow-sm transition ease-in-out duration-500">
                 <Image src={settings} alt={'Configuration'} />
               </button>
             </div>

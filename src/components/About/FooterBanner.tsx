@@ -6,7 +6,7 @@ export function AboutFooterBanner() {
       <h1 className="text-gray text-7xl font-semibold text-center">
         Are you ready?
       </h1>
-      <p className="text-gray text-3xl text-center mt-7 mb-14 flex flex-col">
+      <p className="text-gray text-3xl text-center mt-7 mb-14 flex flex-col px-10">
         <span>Take part in shaping the economic and governance</span>
         <span>settings of Aragon DAO.</span>
       </p>
