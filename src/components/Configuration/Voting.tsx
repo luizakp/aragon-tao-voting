@@ -10,7 +10,6 @@ import { ChartToogle } from './Chart/ChartToogle'
 
 export function Voting() {
   const barChart = useTaoVoting()
-  const { isChartOpen } = useTaoVoting()
   const {
     supportRequired,
     minimumQuorum,
@@ -131,41 +130,37 @@ export function Voting() {
             <Params title="Disputable Voting" inputParams={disputableInputs} />
           </SideBar>
           <div className="w-full divide-y divide-gray-100">
-            {isChartOpen && (
-              <ChartContainer>
-                <TaoVotingBar
-                  nonQuietVotingPeriod={
-                    barChart.totalProposalProcess?.nonQuietVotingPeriod
-                  }
-                  quietEndingPeriod={
-                    barChart.totalProposalProcess?.quietEndingPeriod
-                  }
-                  executionDelay={barChart.totalProposalProcess?.executionDelay}
-                  delegatedVotingPeriod={
-                    barChart.delegatedVoting?.delegatedVotingPeriod
-                  }
-                  voteDuration={
-                    barChart.proposalProcessWithExtension?.voteDuration
-                  }
-                  quietEndingPeriodWithExtension={
-                    barChart.proposalProcessWithExtension?.quietEndingExtension
-                  }
-                  executionDelayWithExtension={
-                    barChart.proposalProcessWithExtension?.executionDelay
-                  }
-                />
-              </ChartContainer>
-            )}
+            <ChartContainer>
+              <TaoVotingBar
+                nonQuietVotingPeriod={
+                  barChart.totalProposalProcess?.nonQuietVotingPeriod
+                }
+                quietEndingPeriod={
+                  barChart.totalProposalProcess?.quietEndingPeriod
+                }
+                executionDelay={barChart.totalProposalProcess?.executionDelay}
+                delegatedVotingPeriod={
+                  barChart.delegatedVoting?.delegatedVotingPeriod
+                }
+                voteDuration={
+                  barChart.proposalProcessWithExtension?.voteDuration
+                }
+                quietEndingPeriodWithExtension={
+                  barChart.proposalProcessWithExtension?.quietEndingExtension
+                }
+                executionDelayWithExtension={
+                  barChart.proposalProcessWithExtension?.executionDelay
+                }
+              />
+            </ChartContainer>
             <div className="flex justify-center pt-16">
               <DisputableVoating />
             </div>
           </div>
-          <ChartToogle />
-          <div className="my-8 w-full md:hidden flex px-12">
+          <div className="my-8 w-full md:hidden flex flex-col px-12">
+            <ChartToogle />
             <Link href="/submit-proposal">
-              <button
-                className="bg-blue text-white border-2 border-transparent hover:text-blue hover:border-blue hover:border-2 hover:bg-white font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500 w-full"
-              >
+              <button className="bg-blue text-white border-2 border-transparent hover:text-blue hover:border-blue hover:border-2 hover:bg-white font-semibold py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500 w-full">
                 Review Proposal
               </button>
             </Link>
