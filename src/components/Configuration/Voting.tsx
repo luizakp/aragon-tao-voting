@@ -1,12 +1,12 @@
 import { useParams } from '../../hooks/useParams'
 import { useTaoVoting } from '../../hooks/useTaoVoting'
 import TaoVotingBar from './Chart/TaoVotingBar'
-import ChartContainer from './Chart/ChartContainer'
 import { SideBar } from './SideBar'
 import { Params } from './SideBar/Params'
 import { DisputableVoating } from './DisputableVoating'
 import Link from 'next/link'
 import { ChartToogle } from './Chart/ChartToogle'
+import ChartContainer from './Chart/ChartContainer'
 
 export function Voting() {
   const barChart = useTaoVoting()

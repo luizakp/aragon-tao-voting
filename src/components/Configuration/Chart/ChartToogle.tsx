@@ -6,16 +6,15 @@ export function ChartToogle() {
   const { isChartOpen, setIsChartOpen } = useTaoVoting()
   return (
     <div className="flex w-full justify-center mb-8">
-      <p>Open chart view</p>
+      <p className="px-3 font-semibold">Open chart view</p>
       <Switch
         checked={isChartOpen}
         onChange={setIsChartOpen}
         className={classnames(
           'relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ease-in-out',
-          isChartOpen ? 'bg-blue-600' : 'bg-gray-200'
+          isChartOpen ? 'bg-blue' : 'bg-gray-200'
         )}
       >
-        <span className="sr-only">Enable notifications</span>
         <span
           className={classnames(
             'inline-block h-4 w-4 transform rounded-full bg-white transition duration-200 ease-in-out',
