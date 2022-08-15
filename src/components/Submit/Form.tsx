@@ -9,7 +9,7 @@ export function SubmitForm() {
       name: 'proposalTitle',
       placeholder: 'Pick a good title for your submission...',
       value: proposalTitle,
-      height: 'h-10',
+      height: 'h-12',
     },
     {
       title: 'Your strategy',
@@ -22,7 +22,7 @@ export function SubmitForm() {
   ]
 
   return (
-    <div className="w-full bg-blue-0 bg-form bg-no-repeat bg-right pl-44 pb-20 mt-14">
+    <div className="w-full bg-blue-0 bg-form bg-no-repeat bg-right px-8 md:px-16 xl:pl-44 pb-20 mt-14">
       {inputs.map((input) => {
         return (
           <div className="pt-14" key={input.title}>
@@ -31,7 +31,7 @@ export function SubmitForm() {
             </h1>
             <textarea
               className={classnames(
-                'font-over font-light placeholder:text-gray-200 w-[600px] px-5 py-[10px] rounded bg-white border border-gray-100 outline-none resize-none',
+                'font-over font-light placeholder:text-gray-200 w-full xl:w-[600px] px-5 py-[10px] rounded bg-white border border-gray-100 outline-none resize-none',
                 input.height
               )}
               placeholder={input.placeholder}

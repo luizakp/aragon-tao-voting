@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import aragonLogo from '../../public/images/aragonLogo.svg'
+import aragonMobile from '../../public/images/aragonMobileLogo.svg'
+import settings from '../../public/images/settings.svg'
 
 export function Header() {
   const router = useRouter()
@@ -18,24 +20,34 @@ export function Header() {
     }
   }, [router.pathname])
   return (
-    <div className="bg-white/40 py-6 px-11 flex flex-col items-center justify-between sticky top-0 z-50 lg:flex-row">
+    <div className="bg-white md:bg-white/40 p-6 md:px-11 flex items-center justify-between sticky top-0 z-50">
       <Link href="/">
         <button className="flex items-center">
-          <Image src={aragonLogo} alt={'Aragon'} />
-          <h3 className="font-bold text-transparent bg-clip-text bg-gradient-to-t from-purple-50 to-purple-200 ml-6">
+          <div className="flex md:hidden">
+            <Image src={aragonMobile} alt={'Aragon'} />
+          </div>
+          <div className="md:flex hidden">
+            <Image src={aragonLogo} alt={'Aragon'} />
+          </div>
+          <h3 className="font-bold text-transparent bg-clip-text bg-gradient-to-t from-purple-50 to-purple-200 ml-2 md:ml-6">
             TAO VOTING
           </h3>
         </button>
       </Link>
-      <div className="flex flex-col items-center font-semibold md:flex-row lg:mt-0">
+      <div className="flex  items-center font-semibold lg:mt-0">
         <Link href="/about">
-          <button className="text-gray my-6 md:mr-10">Learn more</button>
+          <button className="text-gray mr-4 md:mr-10">Learn more</button>
         </Link>
         {!isConfig && (
           <Link href="/configuration">
-            <button className="bg-blue hover:bg-blue-200 text-white py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500">
-              Go to Configuration
-            </button>
+            <div className="flex">
+              <button className="hidden md:flex bg-blue hover:bg-blue-200 text-white py-3 px-10 rounded-lg drop-shadow-sm transition ease-in-out duration-500">
+                Go to Configuration
+              </button>
+              <button className="flex md:hidden bg-blue hover:bg-blue-200 text-white rounded-full p-2 drop-shadow-sm transition ease-in-out duration-500">
+                <Image src={settings} alt={'Configuration'} />
+              </button>
+            </div>
           </Link>
         )}
       </div>

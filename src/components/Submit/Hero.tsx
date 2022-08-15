@@ -13,12 +13,12 @@ export function SubmitHero() {
         {
           title: 'Support Required',
           label: '%',
-          value: supportRequired,
+          value: Number(supportRequired),
         },
         {
           title: 'Minimum Quorum',
           label: '%',
-          value: minimumQuorum,
+          value: Number(minimumQuorum),
         },
         {
           title: 'Vote Duration',
@@ -70,8 +70,10 @@ export function SubmitHero() {
   ]
   return (
     <div className="flex flex-col items-center">
-      <h1 className="font-semibold text-5xl pt-10">Configuration Summary</h1>
-      <div className="pl-44 pr-72 w-full">
+      <h1 className="font-semibold text-5xl pt-10 text-center">
+        Configuration Summary
+      </h1>
+      <div className="px-10 lg:pl-22 lg:pr-36 xl:pl-44 xl:pr-72 w-full">
         {taoOutputs.map((taoOutput) => {
           return (
             <SubmitSummary

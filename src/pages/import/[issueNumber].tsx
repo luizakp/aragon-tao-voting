@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import classnames from 'classnames'
@@ -103,10 +102,10 @@ function Import() {
               variants={success}
               className={classnames({ hidden: isLoading !== 200 })}
             >
-              <h3 className="font-medium text-3xl text-center text-gray mt-18 px-96">
+              <h3 className="font-medium text-3xl text-center text-gray mt-18 px-10 md:px-96">
                 The parameters we&apos;re imported successfully.{' '}
               </h3>
-              <h3 className="font-medium text-3xl text-center text-gray mt-18 px-96">
+              <h3 className="font-medium text-3xl text-center text-gray mt-18 px-10 md:px-96">
                 <Link href="/configuration">
                   <a className="font-bold text-blue underline">Click here</a>
                 </Link>{' '}
@@ -126,7 +125,7 @@ function Import() {
                 }
               )}
             >
-              <h1 className="font-bold text-6xl text-center text-blue uppercase">
+              <h1 className="font-bold  text-4xl md:text-6xl text-center text-blue uppercase px-3">
                 importing parameters
               </h1>
               <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue mt-12" />

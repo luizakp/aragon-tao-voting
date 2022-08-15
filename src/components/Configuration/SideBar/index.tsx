@@ -13,14 +13,14 @@ export function SideBar({ children, minWidth, submitProposal }: SideBarProps) {
   return (
     <div
       className={classnames(
-        'min-h-screen flex flex-col bg-white w-96 px-12 shadow-lg justify-between',
+        'min-h-screen flex flex-col bg-white md:w-96 px-12 shadow-lg justify-between pb-9 md:pb-0',
         {
           'min-w-2/5': minWidth,
         }
       )}
     >
       {children}
-      <div className="my-8 w-full">
+      <div className="my-8 w-full hidden md:flex">
         <Link href="/submit-proposal">
           <button
             disabled={submitProposal}
