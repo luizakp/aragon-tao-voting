@@ -10,7 +10,7 @@ export const cards: CardProps[] = [
   {
     title: 'Tao Voting',
     content:
-      'Tao Voting is the voting process by which the DAO can modify its economic and governance settings post-upgrade.',
+      'Tao Voting is the voting process by which the DAO can modify its economic and governance settings.',
   },
   {
     title: 'Delegation',
@@ -53,7 +53,7 @@ export const bulletsContent: BulletPointProps[] = [
     bullets: [
       {
         id: 1,
-        content: 'Legacy Dandelion Voting settings',
+        content: 'Legacy Voting settings',
       },
       {
         id: 2,
