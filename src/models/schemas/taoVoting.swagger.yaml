@@ -2,7 +2,7 @@ openapi: 3.0.0
 components:
   schemas:
     TaoVoting:
-      description: Tao Voting is the voting process by which the DAO can modify its economic and governance settings post-upgrade.
+      description: Tao Voting is the voting process by which the DAO can modify its economic and governance settings.
       type: object
       properties:
         supportRequired:

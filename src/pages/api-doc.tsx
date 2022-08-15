@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
       info: {
         title: 'Aragon Tao Voting',
         description:
-          'Tao Voting is the voting process by which the DAO can modify its economic and governance settings post-upgrade.',
+          'Tao Voting is the voting process by which the DAO can modify its economic and governance settings.',
         version: '1.0',
       },
       servers: [
