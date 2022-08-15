@@ -42,16 +42,16 @@ export function AboutHero() {
           Tao Voting is an upgraded version of{' '}
           <a
             href={
-              'https://token-engineering-commons.gitbook.io/tec-handbook/archive/archived-content/smart-contract-layer-and-tools/dandelion-voting'
+              'https://documentation.aragon.org/products/aragon-client/explore-template-dao/what-are-apps/voting-app'
             }
             target="_blank"
             rel="noreferrer"
             className="hover: cursor-pointer text-blue"
           >
-            Dandelion Voting
+            Voting App
           </a>{' '}
-          with familiar parameters such as Support Required, Minimum Quorum,
-          Execution Delay and Vote Duration.
+          with familiar parameters such as Support Required, Minimum Quorum, and
+          Vote Duration.
         </p>
         <p>
           Tao Voting also comes with two new concepts: Delegation and Quiet
@@ -71,10 +71,10 @@ export function AboutHero() {
           {links.map((link) => {
             return (
               <div key={link.url} className="flex items-center text-blue">
-                <a 
-                  href={link.url} 
-                  target="_blank" 
-                  rel="noreferrer" 
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-[22px] hover:underline cursor-pointer pr-3"
                 >
                   {link.label}

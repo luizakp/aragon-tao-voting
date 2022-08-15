@@ -10,7 +10,7 @@ export function AboutBanner() {
       </h1>
       <p className="text-white text-3xl text-center leading-10">
         Tao Voting is the voting process by which the DAO can modify its
-        economic and governance settings post-upgrade.
+        economic and governance settings.
       </p>
     </div>
   )
