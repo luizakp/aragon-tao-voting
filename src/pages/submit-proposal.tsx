@@ -112,12 +112,12 @@ export default function SubmitProposal() {
       <MyDialog />
       <SubmitHero />
       <SubmitForm />
-      <div className="flex flex-col bg-transparent md:ml-6 md:mr-8 mt-20 w-full">
+      <div className="flex flex-col bg-transparent md:ml-6 md:mr-8 mt-20">
         <motion.div
           layout
           className="flex flex-col items-center justify-center"
         >
-          <h3 className="font-bold text-gray">Tao Voting Chart</h3>
+          <h3 className="font-bold text-gray w-fit">Tao Voting Chart</h3>
           <div id="tao-chart" className="flex w-full justify-center bg-gray-50">
             <TaoVotingBar
               nonQuietVotingPeriod={
