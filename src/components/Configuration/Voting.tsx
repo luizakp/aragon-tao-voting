@@ -99,7 +99,7 @@ export function Voting() {
       link: 'https://forum.aragon.org/t/deposit-and-challenge-deposit/3669',
       placeholder: 'ANT',
       tooltipText:
-        'The percent of YES votes relative to NO votes needed to pass this proposal.',
+        'Proposal creators must lock a set amount of funds as the collateral required to create a proposal.',
     },
     {
       name: 'challengeDeposit',
@@ -108,7 +108,7 @@ export function Voting() {
       link: 'https://forum.aragon.org/t/deposit-and-challenge-deposit/3669',
       placeholder: 'ANT',
       tooltipText:
-        'The percent of YES votes relative to NO votes needed to pass this proposal.',
+        'If an individual believes that a certain proposal is malicious, contains an error, or is not in alignment with the Community Covenant, they can challenge the proposal',
     },
     {
       name: 'settlementPeriod',
@@ -117,7 +117,7 @@ export function Voting() {
       link: 'https://forum.aragon.org/t/settlement-period/3670',
       placeholder: 'days',
       tooltipText:
-        'The percent of YES votes relative to NO votes needed to pass this proposal.',
+        'Once challenged, the proposal creator has a set amount of time, the “Settlement Period” to dispute the challenge by paying dispute fees and raising the issue to court',
     },
   ]
 
