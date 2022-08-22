@@ -1,0 +1,7 @@
+{
+    "org": "GeneralMagicio",
+    "repo": "aragon-tao-voting",
+    "tokenAddress": "0xa117000000f279d81a1d3cc75430faa017fa5a2e",
+    "votingMethod": "Quadratic voting",
+    "chainId": 1
+}
