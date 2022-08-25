@@ -1,7 +1,12 @@
 {
-    "org": "GeneralMagicio",
-    "repo": "aragon-tao-voting",
-    "tokenAddress": "0xa117000000f279d81a1d3cc75430faa017fa5a2e",
-    "votingMethod": "QUADRATIC",
-    "chainId": 1
+	"method": "QUADRATIC",
+	"strategy": [{
+		"name": "erc20-balance-of",
+		"params": {
+			"address": "0xa117000000f279d81a1d3cc75430faa017fa5a2e",
+			"symbol": "ANT",
+			"decimals": 18
+		}
+	}],
+	"chainId": 1
 }
