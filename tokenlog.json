@@ -1,0 +1,13 @@
+{
+	"method": "QUADRATIC",
+	"strategy": [{
+		"name": "erc20-balance-of",
+		"params": {
+			"address": "0xa117000000f279d81a1d3cc75430faa017fa5a2e",
+			"symbol": "ANT",
+			"decimals": 18
+		}
+	}],
+	"chainId": 1,
+	"labels": ["enhancement"]
+}
